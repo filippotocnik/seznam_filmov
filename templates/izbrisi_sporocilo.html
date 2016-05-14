@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brisanje sporočila</title>
+</head>
+<body>
+
+    <h1>Ali res želite izbrisati to sporočilo?</h1>
+
+    <form method="post" action="/sporocilo/{{ sporocilo.key.id() }}/izbrisi">
+        <button type="submit">Izbriši</button>
+    </form>
+
+</body>
+</html>

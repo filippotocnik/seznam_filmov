@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seznam filmov</title>
+</head>
+<body>
+    <h1>Seznam vseh filmov</h1>
+
+    {% for film in vsi_filmi %}
+        <p>
+            <b>{{ film.ime }}</b>z oceno {{ film.ocena }}
+            <p>
+                <img src="{{ film.slika }}" />
+            </p>
+            <a href="/film/{{ film.key.id() }}">Podrobosti filma</a>
+        </p>
+    {% endfor %}
+
+</body>
+</html>

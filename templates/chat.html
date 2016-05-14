@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seznam filmov</title>
+</head>
+<body>
+
+    <form method="post" action="/poslji-sporocilo">
+        <p>
+            Ime filma:
+            <input name="film">
+        </p>
+        <p>
+            Ocena filma:
+            <input name="ocena" type="number">
+        </p>
+        <p>
+            Slika filma:
+            <input name="slika">
+        </p>
+        <p>
+            <button type="submit">Objavi</button>
+        </p>
+    </form>
+
+    <a href="/prikazi-sporocila">Prikaži vse filme</a>
+
+</body>
+</html>
