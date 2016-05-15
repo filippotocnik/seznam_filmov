@@ -33,10 +33,19 @@ class MainHandler(BaseHandler):
         return self.render_template("chat.html")
 
 class PosljiSporociloHandler(BaseHandler):
+    def popravi_input(self, input):
+        input = input.replace("<script>", "")
+        input = input.replace("</script>", "")
+        return input
+
     def post(self):
-        film = self.request.get("film")
+        film = self.request.get("ime")
         ocena = int(self.request.get("ocena"))
         slika = self.request.get("slika")
+
+        film = self.popravi_input(film)
+        ocena = int(self.popravi_input(ocena))
+        slika = self.popravi_input(slika)
 
         if ocena > 5:
             self.render_template("napaka.html")
@@ -44,7 +53,6 @@ class PosljiSporociloHandler(BaseHandler):
             sporocilo = Film(ime=film, ocena=ocena, slika=slika)
             sporocilo.put()
             return self.render_template("sporocilo-poslano.html")
-
 
 class PrikaziSporocilaHandler(BaseHandler):
     def get(self):
@@ -81,6 +89,8 @@ class UrediSporociloHandler(BaseHandler):
         film.ime = self.request.get("ime")
         film.ocena = int(self.request.get("ocena"))
         film.slika = self.request.get("slika")
+
+
         film.put()
 
         self.redirect("/film/" + film_id)
@@ -96,8 +106,8 @@ class IzbrisiSporociloHandler(BaseHandler):
         return self.render_template("izbrisi_sporocilo.html", view_vars)
 
     def post(self, film_id):
-        sporocilo = Film.get_by_id(int(film_id))
-        sporocilo.key.delete()
+        film = Film.get_by_id(int(film_id))
+        film.key.delete()
 
         self.redirect("/prikazi-filme")
 
