@@ -8,13 +8,18 @@
     <h1>Seznam vseh filmov</h1>
 
     {% for film in vsi_filmi %}
+
         <p>
-            <b>{{ film.ime }}</b>z oceno {{ film.ocena }}
-            <p>
-                <img src="{{ film.slika }}" />
-            </p>
-            <a href="/film/{{ film.key.id() }}">Podrobosti filma</a>
+            <b>Ime filma:</b> {{ film.ime }}
         </p>
+        <p>
+            <b>Ocena:</b> {{ film.ocena }}
+        </p>
+        <p>
+            <img src="{{ film.slika }}" />
+        </p>
+        <a href="/film/{{ film.key.id() }}">Podrobosti filma</a>
+        <p>---------------------------------</p>
     {% endfor %}
 
 </body>

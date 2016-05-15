@@ -2,20 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Urejanje sporočila</title>
+    <title>Urejanje vnosa</title>
 </head>
 <body>
 
-    <h1>Urejanje sporočila</h1>
+    <h1>Urejanje vnosa</h1>
 
-    <form method="post" action="/sporocilo/{{ sporocilo.key.id() }}/uredi">
+    <form method="post" action="/film/{{ film.key.id() }}/uredi">
         <p>
             Ime:
-            <input name="ime" value="{{ sporocilo.ime }}" />
+            <input name="ime" value="{{ film.ime }}" />
         </p>
         <p>
-            Sporočilo:
-            <input name="sporocilo"  value="{{ sporocilo.tekst }}" />
+            Ocena:
+            <input name="ocena"  value="{{ film.ocena }}" />
+        </p>
+        <p>
+            Slika:
+            <input name="slika"  value="{{ film.slika }}" />
         </p>
         <p>
             <button type="submit">Uredi</button>
